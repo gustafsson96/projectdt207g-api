@@ -20,3 +20,80 @@ function verifyToken(req, res, next) {
         return res.status(403).json({ message: "Invalid token" });
     }
 }
+
+// Get all menu items (public route)
+router.get("/", async (req, res) => {
+    try {
+        const items = await MenuItem.find();
+        res.json(items);
+    } catch (err) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+// Create new menu items (protected route)
+router.post("/", verifyToken, async (req, res) => {
+    const { name, ingredients, price, vegan_alternative } = req.body;
+
+    // Validate input
+    if (!name || !ingredients || !price) {
+        return res.status(400).json({ message: "Name, ingredients, and price are required." });
+    }
+
+    try {
+        const newMenuItem = new MenuItem({
+            name,
+            ingredients,
+            price,
+            vegan_alternative
+        });
+
+        await newMenuItem.save();
+        res.status(201).json({ message: "Menu item created successfully!", newMenuItem });
+    } catch (err) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+// Update menu item by ID (protected route)
+router.put("/:id", verifyToken, async (req, res) => {
+    const { name, ingredients, price, vegan_alternative } = req.body;
+
+    // Validate input
+    if (!name || !ingredients || !price) {
+        return res.status(400).json({ message: "Name, ingredients, and price are required." });
+    }
+
+    try {
+        const updatedMenuItem = await MenuItem.findByIdAndUpdate(
+            req.params.id,
+            { name, ingredients, price, vegan_alternative },
+            { new: true } // Return updated document
+        );
+
+        if (!updatedMenuItem) {
+            return res.status(404).json({ message: "Menu item not found." });
+        }
+
+        res.json({ message: "Menu item updated successfully!", updatedMenuItem });
+    } catch (err) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+// Delete menu item by ID (protected route)
+router.delete("/:id", verifyToken, async (req, res) => {
+    try {
+        const deletedMenuItem = await MenuItem.findByIdAndDelete(req.params.id);
+
+        if (!deletedMenuItem) {
+            return res.status(404).json({ message: "Menu item not found." });
+        }
+
+        res.json({ message: "Menu item deleted successfully." });
+    } catch (err) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+module.exports = router;

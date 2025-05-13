@@ -6,6 +6,7 @@ const cors = require("cors");
 const menuItem = require("./models/menuItem");
 const User = require("./models/user");
 const authRoutes = require("./routes/authRoutes");
+const menuRoutes = require("./routes/menuRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/admin", authRoutes);
+app.use("/menu", menuRoutes);
 
 
 app.listen(PORT, () => {
