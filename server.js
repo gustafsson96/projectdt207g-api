@@ -20,6 +20,11 @@ mongoose.connect(process.env.MONGODB_URI)
     .catch((err) => console.error('Connection error: ', err));
 
 // Routes
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to my project API :-)" });
+});
+
+app.use("/admin", authRoutes);
 
 
 app.listen(PORT, () => {
