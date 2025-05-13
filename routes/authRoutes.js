@@ -33,13 +33,10 @@ router.post("/login", async (req, res) => {
         }
 
         // Check if password matches hashed password stored in the database
-        // const passwordMatch = await bcrypt.compare(password, user.password);
-        // if (!passwordMatch) {
-
-        if (password !== user.password) {
-            return res.status(401).json({ message: "Incorrect username or password" });
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(401).json({ message: "Incorrect password" });
         }
-
         // Create JWT token if the password matches
         const payload = { username: user.username };
         const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
