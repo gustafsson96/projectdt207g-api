@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const menuItem = require("./models/menuItem");
 const User = require("./models/user");
-
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
