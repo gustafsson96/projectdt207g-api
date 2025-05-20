@@ -18,11 +18,14 @@ const menuItemSchema = new mongoose.Schema({
     vegan_alternative: {
         type: Boolean,
         required: false
+    },
+    category: {
+        type: String,
+        required: [true, 'Category is required.']
     }
 }, {
     timestamps: true
 });
-
 const MenuItem = mongoose.model('MenuItem', menuItemSchema);
 
 module.exports = MenuItem;

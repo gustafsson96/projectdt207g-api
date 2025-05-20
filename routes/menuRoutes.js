@@ -33,11 +33,11 @@ router.get("/", async (req, res) => {
 
 // Create new menu items (protected route)
 router.post("/", verifyToken, async (req, res) => {
-    const { name, ingredients, price, vegan_alternative } = req.body;
+    const { name, ingredients, price, vegan_alternative, category } = req.body;
 
     // Validate input
-    if (!name || !ingredients || !price) {
-        return res.status(400).json({ message: "Name, ingredients, and price are required." });
+    if (!name || !ingredients || !price || !category ) {
+        return res.status(400).json({ message: "Name, ingredients, price and category are required." });
     }
 
     try {
@@ -45,7 +45,8 @@ router.post("/", verifyToken, async (req, res) => {
             name,
             ingredients,
             price,
-            vegan_alternative
+            vegan_alternative,
+            category
         });
 
         await newMenuItem.save();
@@ -57,17 +58,17 @@ router.post("/", verifyToken, async (req, res) => {
 
 // Update menu item by ID (protected route)
 router.put("/:id", verifyToken, async (req, res) => {
-    const { name, ingredients, price, vegan_alternative } = req.body;
+    const { name, ingredients, price, vegan_alternative, category } = req.body;
 
     // Validate input
-    if (!name || !ingredients || !price) {
-        return res.status(400).json({ message: "Name, ingredients, and price are required." });
+    if (!name || !ingredients || !price || !category) {
+        return res.status(400).json({ message: "Name, ingredients, price and category are required." });
     }
 
     try {
         const updatedMenuItem = await MenuItem.findByIdAndUpdate(
             req.params.id,
-            { name, ingredients, price, vegan_alternative },
+            { name, ingredients, price, vegan_alternative, category },
             { new: true } // Return updated document
         );
 
