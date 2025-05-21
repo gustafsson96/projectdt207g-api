@@ -55,32 +55,5 @@ Creating a new user is currently handled manually. The provided hashPassword.js 
 * dotenv for environment variables
 * cors for cross-origin resource sharing 
 
-## Folder Structure
-
-projectdt207g-api/
-<br>
-├── models/
-<br>
-│   ├── menuItem.js
-<br>
-│   └── user.js
-<br>
-├── routes/
-<br>
-│   ├── authRoutes.js
-<br>
-│   └── menuRoutes.js
-<br>
-├── hashPassword.js
-<br>
-├── server.js
-<br>
-├── .env
-<br>
-├── package.json
-<br>
-└── README.md
-
-
 
 
