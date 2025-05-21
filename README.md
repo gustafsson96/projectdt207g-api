@@ -2,7 +2,7 @@
 
 ## Overview
 
-This API is part of the final project for the course Backend-baserad webbutveckling, dt207g, at Mittuniversitet, Sundsvall. It serves as the backend for *The Green Slice* restaurant admin and frontend site. 
+This API is part of the final project for the course Backend-baserad webbutveckling, dt207g, at Mittuniversitet, Sundsvall. It serves as the backend for *The Green Slice* restaurant admin and frontend sites. 
 <br><br>
 Link to the live API: [API](https://projectdt207g-api.onrender.com)
 <br><br>
@@ -15,7 +15,7 @@ The other parts of the project are:
 * **Password Hashing:** Password hashing with bcrypt.
 * **Full CRUD:** Creat, read, update and delete menu items.
 * **Protected Routes:** Admin routes requiring valid JWT tokens.
-* **MongoDB Atlas:** A MongoDB Atlas database is used to store data. 
+* **MongoDB Atlas:** A MongoDB Atlas database used to store data. 
 
 ## API Endpoints
 
@@ -43,7 +43,7 @@ Ensure node.js is installed and then follow these steps:
 ## Create User
 Creating a new user is currently handled manually. The provided hashPassword.js script is used to hash a password before inserting a new user into the MongoDB database:
 * Replace the value "password" of the variable "plainPassword" in hashPassword.js
-* Run node hashpassword.js
+* Run: node hashpassword.js
 * Copy the hashed password from the terminal and insert together with username into a new user document to MongoDB Atlas.
 
 ## Techonologies Used 
@@ -58,16 +58,27 @@ Creating a new user is currently handled manually. The provided hashPassword.js 
 ## Folder Structure
 
 projectdt207g-api/
+<br>
 ├── models/
+<br>
 │   ├── menuItem.js
+<br>
 │   └── user.js
+<br>
 ├── routes/
+<br>
 │   ├── authRoutes.js
+<br>
 │   └── menuRoutes.js
-├── hashpassword.js
+<br>
+├── hashPassword.js
+<br>
 ├── server.js
+<br>
 ├── .env
+<br>
 ├── package.json
+<br>
 └── README.md
 
 
