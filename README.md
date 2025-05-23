@@ -15,17 +15,21 @@ The other parts of the project are:
 * **Password Hashing:** Password hashing with bcrypt.
 * **Full CRUD:** Creat, read, update and delete menu items.
 * **Protected Routes:** Admin routes requiring valid JWT tokens.
+* **Reservation Routes:** Routes that handles table reservations.
 * **MongoDB Atlas:** A MongoDB Atlas database used to store data. 
 
 ## API Endpoints
 
-| Method     | End Point      | Description         |
-|------------|----------------|---------------------|
+| Method     | End Point      | Description         | Public/Protected        |
+|------------|----------------|---------------------|---------------------|
 | POST       | /admin/login   | Logs in an existing user and returns a JWT token.|
-| GET        | /menu          | Retrieves all menu items (public). |
-| POST       | /menu          | Creates a new menu item (protected). |
-| PUT        | /menu/:id      | Updates a menu item by id (protected). |
-| DELETE     | /menu/:id      | Deletes a menu item by id (protected). |
+| GET        | /menu          | Retrieves all menu items  | Public     |
+| POST       | /menu          | Creates a new menu item   | Protected  |
+| PUT        | /menu/:id      | Updates a menu item by id | Protected  |
+| DELETE     | /menu/:id      | Deletes a menu item by id | Protected  |
+| POST       | /reservation   | Creates a new reservation | Public     |
+| GET        | /reservation   | Retrieves all reservations | Protected |
+| DELETE     | /menu/:id      | Deletes a reservation by id| Protected |
 
 ## Installation
 
