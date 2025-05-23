@@ -5,8 +5,10 @@ const cors = require("cors");
 
 const menuItem = require("./models/menuItem");
 const User = require("./models/user");
+const Reservation = require("./models/reservation");
 const authRoutes = require("./routes/authRoutes");
 const menuRoutes = require("./routes/menuRoutes");
+const reservationRoutes = require("./routes/reservationRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -27,6 +29,7 @@ app.get("/", (req, res) => {
 
 app.use("/admin", authRoutes);
 app.use("/menu", menuRoutes);
+app.use("/reservation", reservationRoutes);
 
 
 app.listen(PORT, () => {
