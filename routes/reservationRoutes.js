@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
 
     // Validate input
     if (!name || !email || !partySize || !dateTime) {
-        return res.status(400).json({ error: 'Required fields are missing.' });
+        return res.status(400).json({ message: 'Required fields are missing.' });
     }
 
     try {
