@@ -22,7 +22,7 @@ The other parts of the project are:
 
 | Method     | End Point      | Description         | Public/Protected        |
 |------------|----------------|---------------------|---------------------|
-| POST       | /admin/login   | Logs in an existing user and returns a JWT token.|
+| POST       | /admin/login   | Logs in an existing user and returns a JWT token.| Public  |
 | GET        | /menu          | Retrieves all menu items  | Public     |
 | POST       | /menu          | Creates a new menu item   | Protected  |
 | PUT        | /menu/:id      | Updates a menu item by id | Protected  |
