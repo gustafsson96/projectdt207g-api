@@ -40,4 +40,19 @@ router.get("/", verifyToken, async (req, res) => {
     }
 });
 
+// Delete reservation by ID (protected route)
+router.delete("/:id", verifyToken, async (req, res) => {
+    try {
+        const deletedReservation = await Reservation.findByIdAndDelete(req.params.id);
+
+        if (!deletedReservation) {
+            return res.status(404).json({ message: "Reservation not found." });
+        }
+
+        res.json({ message: "Reservation deleted successfully." });
+    } catch (err) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
 module.exports = router;
