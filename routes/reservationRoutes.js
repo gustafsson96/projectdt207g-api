@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Reservation = require("../models/reservation");
+const verifyToken = require("../middleware/verifyToken")
 
-// Create a new table reservation
+// Create a new table reservation (public route)
 router.post("/", async (req, res) => {
     const { name, email, partySize, dateTime, specialRequest } = req.body;
 
@@ -27,5 +28,7 @@ router.post("/", async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 });
+
+// Route to view 
 
 module.exports = router;
