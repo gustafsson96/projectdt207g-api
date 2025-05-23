@@ -29,7 +29,7 @@ The other parts of the project are:
 | DELETE     | /menu/:id      | Deletes a menu item by id | Protected  |
 | POST       | /reservation   | Creates a new reservation | Public     |
 | GET        | /reservation   | Retrieves all reservations | Protected |
-| DELETE     | /menu/:id      | Deletes a reservation by id| Protected |
+| DELETE     | /reservation/:id      | Deletes a reservation by id| Protected |
 
 ## Installation
 
