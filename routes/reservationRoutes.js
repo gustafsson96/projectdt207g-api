@@ -29,6 +29,15 @@ router.post("/", async (req, res) => {
     }
 });
 
-// Route to view 
+// Route to view reservations (protected)
+router.get("/", verifyToken, async (req, res) => {
+    try {
+        const reservations = await Reservation.find().sort({ dateTime: 1 }); // Sort reservations in ascending order
+        res.json(reservations);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+    }
+});
 
 module.exports = router;
