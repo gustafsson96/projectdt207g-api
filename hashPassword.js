@@ -1,7 +1,7 @@
 // File to hash passwords before storing in MongoDB Atlas manually
 const bcrypt = require("bcryptjs");
 
-const plainPassword = "password";
+const plainPassword = "password"; // Replace with password to hash
 const saltRounds = 10;
 
 bcrypt.hash(plainPassword, saltRounds, (err, hash) => {

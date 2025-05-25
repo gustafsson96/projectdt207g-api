@@ -8,8 +8,9 @@ function verifyToken(req, res, next) {
     if (!token) {
         return res.status(401).json({ message: " Access token is missing." })
     }
-
+    
     try {
+        // Verify token with secret key
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
         req.user = decoded;
         next();
